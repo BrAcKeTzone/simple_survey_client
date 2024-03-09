@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import API from "../api";
+import API from "./api";
 import { surveyAbout } from "./surveyAbout";
 import { questionsData } from "./questionsData";
 
