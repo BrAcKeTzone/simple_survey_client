@@ -74,10 +74,7 @@ const SurveyForm = () => {
             <>
               <div className="flex flex-col mb-4">
                 <h1 className="text-4xl mb-4">{surveyAbout.surveyTitle}</h1>
-                <p className="mb-4">
-                  <span className="font-bold">Directions:</span>{" "}
-                  {surveyAbout.surveyInstruction}
-                </p>
+                <p className="mb-4">{surveyAbout.surveyInstruction}</p>
                 <span className="text-red-500"> * Required</span>
               </div>
               <Form>

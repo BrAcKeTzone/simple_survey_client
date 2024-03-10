@@ -1,5 +1,5 @@
 export const surveyAbout = {
-  surveyTitle: "Title of the Survey",
+  surveyTitle: "Wattpad Community Survey",
   surveyInstruction:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus lectus vitae risus sodales facilisis. Sed venenatis condimentum tempus. Integer molestie nibh eu lobortis hendrerit. Donec aliquam nisi eleifend, ultrices orci eu, laoreet nunc. Sed ac lectus justo.",
+    "Hey Wattpad Enthusiast!    This short survey aims to understand how you, the reader, navigate and discover stories on Wattpad. Your honest feedback will help us improve the Wattpad experience for everyone. It shouldn't take more than a few minutes to complete. Thanks!",
 };
