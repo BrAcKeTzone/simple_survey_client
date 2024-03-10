@@ -14,9 +14,9 @@ export const questionsData = [
     question_text:
       "Question 2: Do you prefer Wattpad stories with completed status for a satisfying ending?",
     choice_selections: [
-      "Yes, popularity is a good indicator of quality.",
-      "Maybe, if it also has good reviews.",
-      "No, I look for other factors like genre and synopsis.",
+      "Yes, I always prefer completed stories.",
+      "Yes, but I might read ongoing stories if highly recommended.",
+      "No, ongoing stories don't bother me.",
     ],
   },
   {
