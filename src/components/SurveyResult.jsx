@@ -19,9 +19,9 @@ const SurveyResult = () => {
         setSurveyResults(response.data);
       } catch (error) {
         console.error("Error fetching survey results:", error);
+        alert("Retrieving data failed, please reload the page!");
       }
     };
-
     fetchSurveyResults();
   }, [startDate, endDate]);
 
@@ -132,11 +132,11 @@ const SurveyResult = () => {
                   {question.choice_selections.map((choice, index) => (
                     <div key={index} className="mb-1 text-center md:text-left">
                       <em>{`${choice}:`}</em>{" "}
-                      {`${Math.round(
+                      <strong>{`${Math.round(
                         (getCountForChoice(question.id, choice) /
                           surveyResults.length) *
                           100
-                      )}%`}
+                      )}%`}</strong>
                     </div>
                   ))}
                 </div>
