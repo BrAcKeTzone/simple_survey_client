@@ -3,12 +3,23 @@ import { Link } from "react-router-dom";
 import { IoReturnDownBackSharp } from "react-icons/io5";
 import API from "./api";
 import { questionsData } from "./questionsData";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 const SurveyResult = () => {
   const [surveyResults, setSurveyResults] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [trendData, setTrendData] = useState([]);
 
   useEffect(() => {
     const fetchSurveyResults = async () => {
@@ -17,6 +28,16 @@ const SurveyResult = () => {
           params: { startDate, endDate },
         });
         setSurveyResults(response.data);
+        setTrendData(
+          response.data.reduce((acc, result) => {
+            const date = new Date(result.createdAt).toLocaleDateString();
+            if (!acc[date]) {
+              acc[date] = 0;
+            }
+            acc[date] += 1;
+            return acc;
+          }, {})
+        );
       } catch (error) {
         console.error("Error fetching survey results:", error);
         alert("Retrieving data failed, please reload the page!");
@@ -83,6 +104,23 @@ const SurveyResult = () => {
               />
             </div>
           </div>
+        </div>
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Trend Over Time</h2>
+          <LineChart
+            width={600}
+            height={400}
+            data={Object.entries(trendData).map(([date, count]) => ({
+              date,
+              count,
+            }))}
+          >
+            <XAxis dataKey="date" />
+            <YAxis domain={[0, 20]} ticks={[0, 10, 20]} />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Line type="monotone" dataKey="count" stroke="#8884d8" />
+            <Tooltip />
+          </LineChart>
         </div>
         {questionsData.map((question) => (
           <div key={question.id} className="mb-8 p-2 rounded">
