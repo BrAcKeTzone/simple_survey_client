@@ -107,20 +107,22 @@ const SurveyResult = () => {
         </div>
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Trend Over Time</h2>
-          <LineChart
-            width={600}
-            height={400}
-            data={Object.entries(trendData).map(([date, count]) => ({
-              date,
-              count,
-            }))}
-          >
-            <XAxis dataKey="date" />
-            <YAxis domain={[0, 20]} ticks={[0, 10, 20]} />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Line type="monotone" dataKey="count" stroke="#8884d8" />
-            <Tooltip />
-          </LineChart>
+          <div className=" overflow-x-auto">
+            <LineChart
+              width={600}
+              height={400}
+              data={Object.entries(trendData).map(([date, count]) => ({
+                date,
+                count,
+              }))}
+            >
+              <XAxis dataKey="date" />
+              <YAxis domain={[0, 50]} ticks={[0, 10, 20, 30, 40, 50]} />
+              <CartesianGrid strokeDasharray="3 3" />
+              <Line type="monotone" dataKey="count" stroke="#8884d8" />
+              <Tooltip />
+            </LineChart>
+          </div>
         </div>
         {questionsData.map((question) => (
           <div key={question.id} className="mb-8 p-2 rounded">
