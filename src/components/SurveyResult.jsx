@@ -19,13 +19,14 @@ const SurveyResult = () => {
   const [surveyResults, setSurveyResults] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [gender, setGender] = useState("");
   const [trendData, setTrendData] = useState([]);
 
   useEffect(() => {
     const fetchSurveyResults = async () => {
       try {
         const response = await API.get("/survey/review", {
-          params: { startDate, endDate },
+          params: { startDate, endDate, gender },
         });
         setSurveyResults(response.data);
         setTrendData(
@@ -44,7 +45,7 @@ const SurveyResult = () => {
       }
     };
     fetchSurveyResults();
-  }, [startDate, endDate]);
+  }, [startDate, endDate, gender]);
 
   const getColorHexCode = (index) => {
     const colors = [
@@ -80,9 +81,24 @@ const SurveyResult = () => {
           >
             <IoReturnDownBackSharp className="text-2xl" /> Back to Survey
           </Link>
-          <div className="flex justify-between mt-4">
+          <div className="flex flex-col md:flex-row justify-between mt-4">
             <div className="flex items-center">
-              <label htmlFor="startDate" className="mr-2">
+              <label htmlFor="gender" className="mr-2 w-full md:w-auto">
+                Gender:
+              </label>
+              <select
+                id="gender"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+              </select>
+            </div>
+            <div className="flex items-center">
+              <label htmlFor="startDate" className="mr-2 w-full md:w-auto">
                 Start Date:
               </label>
               <input
@@ -93,7 +109,7 @@ const SurveyResult = () => {
               />
             </div>
             <div className="flex items-center">
-              <label htmlFor="endDate" className="mr-2">
+              <label htmlFor="endDate" className="mr-2 w-full md:w-auto">
                 End Date:
               </label>
               <input
