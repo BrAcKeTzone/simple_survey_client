@@ -132,11 +132,19 @@ const SurveyResult = () => {
                   {question.choice_selections.map((choice, index) => (
                     <div key={index} className="mb-1 text-center md:text-left">
                       <em>{`${choice}:`}</em>{" "}
-                      <strong>{`${Math.round(
-                        (getCountForChoice(question.id, choice) /
-                          surveyResults.length) *
-                          100
-                      )}%`}</strong>
+                      <strong>{`${
+                        isNaN(
+                          (getCountForChoice(question.id, choice) /
+                            surveyResults.length) *
+                            100
+                        )
+                          ? "0%"
+                          : `${Math.round(
+                              (getCountForChoice(question.id, choice) /
+                                surveyResults.length) *
+                                100
+                            )}%`
+                      }`}</strong>
                     </div>
                   ))}
                 </div>
