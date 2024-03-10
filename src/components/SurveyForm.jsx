@@ -44,7 +44,6 @@ const SurveyForm = () => {
         try {
           setUnansweredQuestions([]);
           const response = await API.post("/survey/save", values);
-          console.log(response.data);
           if (response.status === 201) {
             alert("Thank you for participating!");
             navigate("/result");
