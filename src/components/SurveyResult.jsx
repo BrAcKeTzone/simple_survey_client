@@ -129,10 +129,10 @@ const SurveyResult = () => {
                 </div>
                 <div className="mt-4 md:mt-0 px-6 flex flex-col w-full md:border-l md:border-black md:px-8">
                   <hr className="h-[2px] bg-black md:hidden" />
-                  <span className="font-bold">Response Percentage:</span>
+                  <span className="font-bold mb-2">Response Percentage:</span>
                   {question.choice_selections.map((choice, index) => (
                     <div key={index} className="mb-1 text-center md:text-left">
-                      <strong>{`${choice}:`}</strong>{" "}
+                      <em>{`${choice}:`}</em>{" "}
                       {`${Math.round(
                         (getCountForChoice(question.id, choice) /
                           surveyResults.length) *
