@@ -21,6 +21,7 @@ const SurveyResult = () => {
   const [endDate, setEndDate] = useState("");
   const [gender, setGender] = useState("");
   const [trendData, setTrendData] = useState([]);
+  const [resultCount, setResultCount] = useState(0)
 
   useEffect(() => {
     const fetchSurveyResults = async () => {
@@ -28,6 +29,7 @@ const SurveyResult = () => {
         const response = await API.get("/survey/review", {
           params: { startDate, endDate, gender },
         });
+        setResultCount(response.data.length)
         setSurveyResults(response.data);
         setTrendData(
           response.data.reduce((acc, result) => {
@@ -184,10 +186,10 @@ const SurveyResult = () => {
                 </div>
                 <div className="mt-4 md:mt-0 px-6 flex flex-col w-full md:border-l md:border-black md:px-8">
                   <hr className="h-[2px] bg-black md:hidden" />
-                  <span className="font-bold mb-2">Response Percentage:</span>
+                  <span className="font-bold mb-2 text-sm">Response Percentage from <em>{resultCount}</em> participants:</span>
                   {question.choice_selections.map((choice, index) => (
-                    <div key={index} className="mb-1 text-center md:text-left">
-                      <em>{`${choice}:`}</em>{" "}
+                    <div key={index} className="mb-1 text-left md:text-left">
+                      <em className="text-sm">{`${choice}:`}</em>{" "}
                       <strong>{`${
                         isNaN(
                           (getCountForChoice(question.id, choice) /
