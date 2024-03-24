@@ -59,6 +59,7 @@ const SurveyResult = () => {
       "#008080", // Teal
       "#808080", // Gray
       "#ffa500", // Orange
+      "#800000", // Maroon
     ];
     return colors[index % colors.length];
   };

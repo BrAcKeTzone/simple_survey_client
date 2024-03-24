@@ -2,99 +2,115 @@ export const questionsData = [
   {
     id: 1,
     question_text:
-      "Question 1: Have you read a Wattpad story with over a million reads?",
+      "What is your preferred leisure activity outside of academics?",
     choice_selections: [
-      "Yes, I always prefer completed stories.",
-      "Yes, but I might read ongoing stories if highly recommended.",
-      "No, ongoing stories don't bother me.",
+      "Reading",
+      "Sports and fitness",
+      "Watching movies or TV shows",
+      "Gaming",
+      "Traveling",
+      "Writing",
+      "Arts and crafts",
+      "Dancing",
+      "Music",
+      "Cooking/Baking",
+      "Others",
     ],
   },
   {
     id: 2,
     question_text:
-      "Question 2: Do you prefer Wattpad stories with completed status for a satisfying ending?",
+      "In your free time, do you prefer indoor or outdoor activities?",
     choice_selections: [
-      "Yes, I always prefer completed stories.",
-      "Yes, but I might read ongoing stories if highly recommended.",
-      "No, ongoing stories don't bother me.",
+      "Indoor",
+      "Outdoor",
+      "Both",
+      "It depends on my mood",
+      "No preference",
     ],
   },
   {
     id: 3,
-    question_text:
-      "Question 3: Would you recommend a Wattpad book solely based on its popularity?",
+    question_text: "What initially inspired you to pursue your current hobby?",
     choice_selections: [
-      "Yes, popularity is a good indicator of quality.",
-      "Maybe, if it also has good reviews.",
-      "No, I look for other factors like genre and synopsis.",
+      "Personal interest",
+      "Influence from friends or family",
+      "Exposure through media (TV, books, etc.)",
+      "Educational or professional reasons",
     ],
   },
   {
     id: 4,
     question_text:
-      "Question 4: Is the number of reads an important factor when choosing a Wattpad story?",
+      "What factors contribute to your enjoyment of your chosen leisure activity? (Feel free to select multiple options.)",
     choice_selections: [
-      "Yes, it's one of the main factors I consider.",
-      "Somewhat important, but not the deciding factor.",
-      "Not important at all, I focus on description and genre.",
+      "Relaxation",
+      "Physical activity",
+      "Social interaction",
+      "Creativity",
+      "Skill development",
     ],
   },
   {
     id: 5,
     question_text:
-      "Question 5: Have you discovered new Wattpad stories based on their trending status?",
+      "On average, how many hours per week do you dedicate to your favorite hobby?",
     choice_selections: [
-      "Yes, trending stories are a great way to find new reads.",
-      "Sometimes, but I also browse by genre.",
-      "No, I don't pay attention to trending stories.",
+      "Less than 1 hour",
+      "1-3 hours",
+      "4-6 hours",
+      "7-10 hours",
+      "More than 10 hours",
     ],
   },
   {
     id: 6,
     question_text:
-      "Question 6: Do you tend to read Wattpad stories recommended by the Wattpad community?",
-    choice_selections: [
-      "Yes, recommendations are a great source of new stories.",
-      "Sometimes, but I also explore on my own.",
-      "No, I prefer to find stories myself.",
-    ],
+      "Are there specific times during the day when you prefer to engage in your leisure activities?",
+    choice_selections: ["Morning", "Afternoon", "Evening", "Night"],
   },
   {
     id: 7,
-    question_text: "Question 7: Do you also write stories in wattpad?",
+    question_text:
+      "Do you enjoy pursuing your leisure activities alone or with others?",
     choice_selections: [
-      "Yes, I am a Wattpad writer.",
-      "No, I am only a reader.",
+      "Alone",
+      "With friends",
+      "With family",
+      "With a mix of friends and family",
     ],
   },
   {
     id: 8,
     question_text:
-      "Question 8: Have you read a book that stays in your mind for a couple of weeks or even months?",
+      "How do you balance your leisure activities with academic responsibilities?",
     choice_selections: [
-      "Yes, I've read some truly memorable Wattpad stories.",
-      "Maybe a few, but most are forgettable.",
-      "No, I don't tend to remember Wattpad stories for long.",
+      "Strict schedule planning",
+      "Flexible time management",
+      "Prioritizing academics first",
+      "Mixing leisure with study breaks",
+      "No specific strategy",
     ],
   },
   {
     id: 9,
     question_text:
-      "Question 9: Have you ever chosen a Wattpad book because it was featured or promoted?",
+      "How do you prioritize your hobby against other commitments?",
     choice_selections: [
-      "Yes, featured stories are more likely to catch my eye.",
-      "Sometimes, but I still check the synopsis.",
-      "No, features don't influence my choices.",
+      "Hobby always comes first",
+      "Balancing based on priorities",
+      "Prioritizing other commitments first",
+      "It depends on the situation",
     ],
   },
   {
     id: 10,
-    question_text:
-      "Question 10: Do you believe the number of reads reflects the quality of a Wattpad story?",
+    question_text: "How do you share your leisure activities with others?",
     choice_selections: [
-      "Yes, a high number of reads suggests a good story.",
-      "Maybe, but it could also be due to good promotion.",
-      "No, the number of reads doesn't guarantee quality.",
+      "Social media posts",
+      "Conversations with friends and family",
+      "Participating in group activities",
+      "I prefer to keep it private",
     ],
   },
 ];

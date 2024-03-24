@@ -1,5 +1,5 @@
 export const surveyAbout = {
-  surveyTitle: "Wattpad Community Survey",
+  surveyTitle: "Dear WMSU students,",
   surveyInstruction:
-    "Hey Wattpad Enthusiast!    This short survey aims to understand how you, the reader, navigate and discover stories on Wattpad. Your honest feedback will help us improve the Wattpad experience for everyone. It shouldn't take more than a few minutes to complete. Thanks!",
+    "We're conducting a survey to explore your preferred leisure activities beyond academics. Your participation will help us gain insights into how students at WMSU spend their free time. Please take a moment to share your interests and preferences by completing the following questionnaire. Your responses are valuable and will remain confidential. Thank you for your contribution.",
 };
