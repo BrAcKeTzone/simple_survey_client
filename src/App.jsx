@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import SurveyForm from "./components/SurveyForm";
 import SurveyResult from "./components/SurveyResult";
 import NotFound from "./components/NotFound";
+import "./App.css";
 
 function App() {
   return (
