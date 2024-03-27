@@ -1,8 +1,9 @@
 export const questionsData = [
   {
     id: 1,
+    selectionType: "multiple",
     question_text:
-      "What is your preferred leisure activity outside of academics?",
+      "What are your preferred leisure activity outside of academics?",
     choice_selections: [
       "Reading",
       "Sports and fitness",
@@ -19,6 +20,7 @@ export const questionsData = [
   },
   {
     id: 2,
+    selectionType: "single",
     question_text:
       "In your free time, do you prefer indoor or outdoor activities?",
     choice_selections: [
@@ -31,6 +33,7 @@ export const questionsData = [
   },
   {
     id: 3,
+    selectionType: "single",
     question_text: "What initially inspired you to pursue your current hobby?",
     choice_selections: [
       "Personal interest",
@@ -41,6 +44,7 @@ export const questionsData = [
   },
   {
     id: 4,
+    selectionType: "multiple",
     question_text:
       "What factors contribute to your enjoyment of your chosen leisure activity? (Feel free to select multiple options.)",
     choice_selections: [
@@ -53,6 +57,7 @@ export const questionsData = [
   },
   {
     id: 5,
+    selectionType: "single",
     question_text:
       "On average, how many hours per week do you dedicate to your favorite hobby?",
     choice_selections: [
@@ -65,12 +70,14 @@ export const questionsData = [
   },
   {
     id: 6,
+    selectionType: "multiple",
     question_text:
       "Are there specific times during the day when you prefer to engage in your leisure activities?",
     choice_selections: ["Morning", "Afternoon", "Evening", "Night"],
   },
   {
     id: 7,
+    selectionType: "single",
     question_text:
       "Do you enjoy pursuing your leisure activities alone or with others?",
     choice_selections: [
@@ -82,6 +89,7 @@ export const questionsData = [
   },
   {
     id: 8,
+    selectionType: "single",
     question_text:
       "How do you balance your leisure activities with academic responsibilities?",
     choice_selections: [
@@ -94,6 +102,7 @@ export const questionsData = [
   },
   {
     id: 9,
+    selectionType: "single",
     question_text:
       "How do you prioritize your hobby against other commitments?",
     choice_selections: [
@@ -105,6 +114,7 @@ export const questionsData = [
   },
   {
     id: 10,
+    selectionType: "single",
     question_text: "How do you share your leisure activities with others?",
     choice_selections: [
       "Social media posts",

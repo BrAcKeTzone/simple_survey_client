@@ -71,9 +71,15 @@ const SurveyResult = () => {
   };
 
   const getCountForChoice = (questionId, choice) => {
-    const resultsForQuestion = surveyResults.filter(
-      (result) => result.answers[questionId] === choice
-    );
+    const resultsForQuestion = surveyResults.filter((result) => {
+      const answer = result.answers[questionId];
+      if (Array.isArray(answer)) {
+        return answer.includes(choice);
+      } else {
+        return answer === choice;
+      }
+    });
+
     return resultsForQuestion.length;
   };
 
@@ -81,9 +87,8 @@ const SurveyResult = () => {
     <>
       {isLoading ? (
         <div className="flex items-center justify-center h-screen bg-white bg-opacity-20">
-        <span className="loader" />
-      </div>
-      
+          <span className="loader" />
+        </div>
       ) : (
         <div className="bg-purple-100 md:py-8">
           <div className="max-w-3xl mx-auto p-8 bg-gray-100 rounded-lg shadow-md border-t-8 border-purple-300">
@@ -95,7 +100,7 @@ const SurveyResult = () => {
               >
                 <IoReturnDownBackSharp className="text-2xl" /> Back to Survey
               </Link>
-              <div className="flex flex-col md:flex-row justify-between mt-4">
+              <div className="flex flex-col md:flex-row justify-between space-y-2 md:space-y-0">
                 <div className="flex items-center">
                   <label htmlFor="gender" className="mr-2 w-full md:w-auto">
                     Gender:
@@ -147,7 +152,7 @@ const SurveyResult = () => {
                   }))}
                 >
                   <XAxis dataKey="date" />
-                  <YAxis domain={[0, 50]} ticks={[0, 10, 20, 30, 40, 50]} />
+                  <YAxis domain={[0, 30]} ticks={[0, 5, 10, 15, 20, 25, 30]} />
                   <CartesianGrid strokeDasharray="3 3" />
                   <Line type="monotone" dataKey="count" stroke="#8884d8" />
                   <Tooltip />
@@ -160,7 +165,7 @@ const SurveyResult = () => {
                   {question.question_text}
                 </p>
                 <div className="grid grid-cols-1">
-                  <div className="flex flex-row flex-wrap">
+                  <div className="flex flex-col flex-wrap">
                     {question.choice_selections.map((choice, index) => (
                       <div key={index} className="flex items-center mb-2 mr-4">
                         <div
@@ -177,7 +182,7 @@ const SurveyResult = () => {
                   </div>
                   <div className="flex flex-col md:flex-row justify-center items-center border border-black">
                     <div className="w-full flex justify-center">
-                      <PieChart width={200} height={200}>
+                      <PieChart width={300} height={300}>
                         <Pie
                           data={question.choice_selections.map(
                             (choice, index) => ({
@@ -187,7 +192,7 @@ const SurveyResult = () => {
                           )}
                           cx="50%"
                           cy="50%"
-                          outerRadius={60}
+                          outerRadius={120}
                           fill="#8884d8"
                           dataKey="value"
                         >
@@ -198,17 +203,14 @@ const SurveyResult = () => {
                         <Tooltip />
                       </PieChart>
                     </div>
-                    <div className="mt-4 md:mt-0 px-6 flex flex-col w-full md:border-l md:border-black md:px-8">
+                    <div className="my-4 px-6 flex flex-col w-full md:border-l md:border-black md:px-8">
                       <hr className="h-[2px] bg-black md:hidden" />
                       <span className="font-bold mb-2 text-sm">
                         Response Percentage from <em>{resultCount}</em>{" "}
                         participants:
                       </span>
                       {question.choice_selections.map((choice, index) => (
-                        <div
-                          key={index}
-                          className="mb-1 text-left md:text-left"
-                        >
+                        <div key={index} className="flex justify-between">
                           <em className="text-sm">{`${choice}:`}</em>{" "}
                           <strong>{`${
                             isNaN(
@@ -216,12 +218,12 @@ const SurveyResult = () => {
                                 surveyResults.length) *
                                 100
                             )
-                              ? "0%"
+                              ? "0.00%"
                               : `${Math.round(
                                   (getCountForChoice(question.id, choice) /
                                     surveyResults.length) *
                                     100
-                                )}%`
+                                ).toFixed(2)}%`
                           }`}</strong>
                         </div>
                       ))}

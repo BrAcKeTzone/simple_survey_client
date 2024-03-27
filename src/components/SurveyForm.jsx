@@ -14,7 +14,7 @@ const SurveyForm = () => {
     age: "",
     gender: "",
     answers: questionsData.reduce((acc, question) => {
-      acc[question.id] = "";
+      acc[question.id] = question.selectionType === "multiple" ? [] : "";
       return acc;
     }, {}),
   };
@@ -50,6 +50,7 @@ const SurveyForm = () => {
             alert("Thank you for participating!");
             navigate("/result");
           }
+          // console.log(values);
         } catch (error) {
           console.error("Error saving survey response:", error);
           alert("Submission failed, please try again!");
@@ -198,7 +199,11 @@ const SurveyForm = () => {
                               onClick={() => handleQuestionClick(question.id)}
                             >
                               <Field
-                                type="radio"
+                                type={
+                                  question.selectionType === "multiple"
+                                    ? "checkbox"
+                                    : "radio"
+                                }
                                 id={`choice_${question.id}_${index}`}
                                 name={`answers[${question.id}]`}
                                 value={choice}
