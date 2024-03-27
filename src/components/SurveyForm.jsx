@@ -184,6 +184,11 @@ const SurveyForm = () => {
                       >
                         <p className="text-lg font-semibold text-gray-800">
                           {question.question_text}
+                          {question.selectionType === "multiple" && (
+                            <span className="text-xs text-gray-600 ml-1">
+                              (Multiple Answers Allowed)
+                            </span>
+                          )}
                           <span className="text-red-500"> *</span>
                         </p>
                         {unansweredQuestions.includes(question.id) && (
