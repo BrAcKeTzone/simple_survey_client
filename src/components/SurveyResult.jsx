@@ -23,6 +23,7 @@ const SurveyResult = () => {
   const [trendData, setTrendData] = useState([]);
   const [resultCount, setResultCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [enlargedChartIndex, setEnlargedChartIndex] = useState(null); // Track which PieChart is enlarged
 
   useEffect(() => {
     const fetchSurveyResults = async () => {
@@ -81,6 +82,15 @@ const SurveyResult = () => {
     });
 
     return resultsForQuestion.length;
+  };
+
+  // Function to toggle enlargement of PieChart
+  const toggleEnlargement = (index) => {
+    if (enlargedChartIndex === index) {
+      setEnlargedChartIndex(null); // If already enlarged, close it
+    } else {
+      setEnlargedChartIndex(index); // Otherwise, enlarge the PieChart at the specified index
+    }
   };
 
   return (
@@ -159,79 +169,134 @@ const SurveyResult = () => {
                 </LineChart>
               </div>
             </div>
-            {questionsData.map((question) => (
-              <div key={question.id} className="mb-8 p-2 rounded">
-                <p className="text-lg font-semibold text-gray-800">
-                  {question.question_text}
-                </p>
-                <div className="grid grid-cols-1">
-                  <div className="flex flex-col flex-wrap">
-                    {question.choice_selections.map((choice, index) => (
-                      <div key={index} className="flex items-center mb-2 mr-4">
-                        <div
-                          style={{
-                            width: "1rem",
-                            height: "1rem",
-                            marginRight: "0.5rem",
-                            backgroundColor: getColorHexCode(index),
-                          }}
-                        ></div>
-                        <span>{choice}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-col md:flex-row justify-center items-center border border-black">
-                    <div className="w-full flex justify-center">
-                      <PieChart width={300} height={300}>
-                        <Pie
-                          data={question.choice_selections.map(
-                            (choice, index) => ({
-                              name: choice,
-                              value: getCountForChoice(question.id, choice),
-                            })
-                          )}
-                          cx="50%"
-                          cy="50%"
-                          outerRadius={120}
-                          fill="#8884d8"
-                          dataKey="value"
-                        >
-                          {question.choice_selections.map((choice, index) => (
-                            <Cell key={index} fill={getColorHexCode(index)} />
-                          ))}
-                        </Pie>
-                        <Tooltip />
-                      </PieChart>
-                    </div>
-                    <div className="my-4 px-6 flex flex-col w-full md:border-l md:border-black md:px-8">
-                      <hr className="h-[2px] bg-black md:hidden" />
-                      <span className="font-bold mb-2 text-sm">
-                        Response Percentage from <em>{resultCount}</em>{" "}
-                        participants:
-                      </span>
+            {questionsData.map(
+              (
+                question,
+                index // Added index parameter for mapping
+              ) => (
+                <div key={question.id} className="mb-8 p-2 rounded">
+                  <p className="text-lg font-semibold text-gray-800">
+                    {question.question_text}
+                  </p>
+                  <div className="grid grid-cols-1">
+                    <div className="flex flex-col md:flex-row flex-wrap">
                       {question.choice_selections.map((choice, index) => (
-                        <div key={index} className="flex justify-between">
-                          <em className="text-sm">{`${choice}:`}</em>{" "}
-                          <strong>{`${
-                            isNaN(
-                              (getCountForChoice(question.id, choice) /
-                                surveyResults.length) *
-                                100
-                            )
-                              ? "0.00%"
-                              : `${Math.round(
-                                  (getCountForChoice(question.id, choice) /
-                                    surveyResults.length) *
-                                    100
-                                ).toFixed(2)}%`
-                          }`}</strong>
+                        <div
+                          key={index}
+                          className="flex items-center mb-2 mr-4"
+                        >
+                          <div
+                            style={{
+                              width: "1rem",
+                              height: "1rem",
+                              marginRight: "0.5rem",
+
+                              backgroundColor: getColorHexCode(index),
+                            }}
+                          ></div>
+                          <span>{choice}</span>
                         </div>
                       ))}
                     </div>
+                    <div
+                      className="flex flex-col md:flex-row justify-center items-center border border-black"
+                      onClick={() => toggleEnlargement(index)} // Toggle enlargement on click
+                      style={{ cursor: "pointer" }} // Add pointer cursor
+                    >
+                      <div className="w-full flex justify-center">
+                        <PieChart width={300} height={300}>
+                          <Pie
+                            data={question.choice_selections.map(
+                              (choice, index) => ({
+                                name: choice,
+                                value: getCountForChoice(question.id, choice),
+                              })
+                            )}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={120}
+                            fill="#8884d8"
+                            dataKey="value"
+                          >
+                            {question.choice_selections.map((choice, index) => (
+                              <Cell key={index} fill={getColorHexCode(index)} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                        </PieChart>
+                      </div>
+                      <div className="my-4 px-6 flex flex-col w-full md:border-l md:border-black md:px-8">
+                        <hr className="h-[2px] bg-black md:hidden" />
+                        <span className="font-bold mb-2 text-sm">
+                          Response Percentage from <em>{resultCount}</em>{" "}
+                          participants:
+                        </span>
+                        {question.choice_selections.map((choice, index) => (
+                          <div key={index} className="flex justify-between">
+                            <em className="text-sm">{`${choice}:`}</em>{" "}
+                            <strong>{`${
+                              isNaN(
+                                (getCountForChoice(question.id, choice) /
+                                  surveyResults.length) *
+                                  100
+                              )
+                                ? "0.00%"
+                                : `${Math.round(
+                                    (getCountForChoice(question.id, choice) /
+                                      surveyResults.length) *
+                                      100
+                                  ).toFixed(2)}%`
+                            }`}</strong>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="hidden md:block">
+                      {enlargedChartIndex === index && (
+                        <div className="flex fixed top-0 left-0 z-50 w-full h-screen bg-gray-900 bg-opacity-75 justify-center items-center">
+                          <div className="bg-white p-4 rounded-lg relative">
+                            <PieChart width={600} height={400}>
+                              <Pie
+                                data={question.choice_selections.map(
+                                  (choice, index) => ({
+                                    name: choice,
+                                    value: getCountForChoice(
+                                      question.id,
+                                      choice
+                                    ),
+                                  })
+                                )}
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={180}
+                                fill="#8884d8"
+                                dataKey="value"
+                              >
+                                {question.choice_selections.map(
+                                  (choice, index) => (
+                                    <Cell
+                                      key={index}
+                                      fill={getColorHexCode(index)}
+                                    />
+                                  )
+                                )}
+                              </Pie>
+                              <Tooltip />
+                            </PieChart>
+                            <button
+                              className="absolute top-0 right-0 mt-2 mr-2 text-gray-600 hover:text-gray-800"
+                              onClick={() => setEnlargedChartIndex(null)}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       )}
