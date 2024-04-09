@@ -27,6 +27,22 @@ const SurveyForm = () => {
     gender: Yup.string().required("Required"),
   });
 
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [agreed, setAgreed] = useState(false);
+
+  const handleCloseOverlay = () => {
+    setShowOverlay(false);
+  };
+
+  const handleAgree = () => {
+    setAgreed(true);
+    handleCloseOverlay();
+  };
+
+  const handleDisagree = () => {
+    navigate("/result");
+  };
+  
   const [unansweredQuestions, setUnansweredQuestions] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -69,6 +85,31 @@ const SurveyForm = () => {
 
   return (
     <>
+      {showOverlay && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <h1 className="text-xl font-bold mb-4">Terms and Conditions</h1>
+            <p className="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              ullamcorper ante ac ex laoreet, sed scelerisque risus dapibus.
+            </p>
+            <div className="flex justify-end">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+                onClick={handleAgree}
+              >
+                Agree
+              </button>
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                onClick={handleDisagree}
+              >
+                Disagree
+              </button>
+			</div>
+          </div>
+        </div>
+      )}   
       {isSubmitting ? (
         <div className="flex items-center justify-center h-screen bg-white bg-opacity-20">
           <span className="loader" />
