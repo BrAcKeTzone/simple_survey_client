@@ -86,36 +86,35 @@ const SurveyForm = () => {
   return (
     <>
       {showOverlay && (
-        <div c{showOverlay && (
-  <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-    <div className="bg-white p-8 rounded-lg shadow-md max-w-lg">
-      <h1 className="text-2xl font-bold mb-4">TERMS AND CONDITIONS</h1>
-      <p className="mb-4 text-sm">
-        Participation in the Leisure Activities Beyond Academics Survey is voluntary. By participating in the Survey, you agree to these Terms and Conditions. The Survey is open to the students of WMSU-ESU. The purpose of the Survey is to gather information about leisure activities beyond academics.
-      </p>
-      <p className="mb-4 text-sm">
-        All responses to the Survey will be kept confidential. Personal information such as your name or contact details will not be shared with third parties without your explicit consent. By participating in the Survey, you consent to the use of your responses in accordance with these Terms and Conditions. Completing the Survey should take approximately 10-15 minutes.
-      </p>
-      <p className="mb-4 text-sm">
-        By clicking "Agree" and proceeding with the Survey, you acknowledge that you have read and understood these Terms and Conditions and agree to participate in the Survey under these conditions.
-      </p>
-      <div className="flex justify-end">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
-          onClick={handleAgree}
-        >
-          Agree
-        </button>
-        <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleDisagree}
-        >
-          Disagree
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-8 rounded-lg shadow-md max-w-lg">
+            <h1 className="text-2xl font-bold mb-4">TERMS AND CONDITIONS</h1>
+            <p className="mb-4 text-sm">
+              Participation in the Leisure Activities Beyond Academics Survey is voluntary. By participating in the Survey, you agree to these Terms and Conditions. The Survey is open to the students of WMSU-ESU. The purpose of the Survey is to gather information about leisure activities beyond academics.
+            </p>
+            <p className="mb-4 text-sm">
+              All responses to the Survey will be kept confidential. Personal information such as your name or contact details will not be shared with third parties without your explicit consent. By participating in the Survey, you consent to the use of your responses in accordance with these Terms and Conditions. Completing the Survey should take approximately 10-15 minutes.
+            </p>
+            <p className="mb-4 text-sm">
+              By clicking "Agree" and proceeding with the Survey, you acknowledge that you have read and understood these Terms and Conditions and agree to participate in the Survey under these conditions.
+            </p>
+            <div className="flex justify-end">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+                onClick={handleAgree}
+              >
+                Agree
+              </button>
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                onClick={handleDisagree}
+              >
+                Disagree
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {isSubmitting ? (
         <div className="flex items-center justify-center h-screen bg-white bg-opacity-20">
           <span className="loader" />
