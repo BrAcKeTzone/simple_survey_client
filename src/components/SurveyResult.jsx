@@ -44,6 +44,7 @@ const SurveyResult = () => {
             return acc;
           }, {})
         );
+        console.log(response.data)
       } catch (error) {
         console.error("Error fetching survey results:", error);
         alert("Retrieving data failed, please reload the page!");
