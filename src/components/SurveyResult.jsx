@@ -93,6 +93,49 @@ const SurveyResult = () => {
       setEnlargedChartIndex(index); // Otherwise, enlarge the PieChart at the specified index
     }
   };
+  
+// Function to export survey results to CSV
+const exportToCSV = () => {
+  const csvRows = [];
+
+  // Column headers
+  const columnHeaders = [
+    "Age",
+    "Gender",
+    "Date Taken",
+    ...questionsData.map((question) => `"${question.question_text}"`),
+  ];
+  csvRows.push(columnHeaders.join(","));
+
+  // Data rows
+  surveyResults.forEach((result) => {
+    const dataRow = [
+      result.age,
+      result.gender,
+      result.dateTaken,
+      ...questionsData.map((question) => {
+        const answer = result.answers[question.id];
+        if (Array.isArray(answer)) {
+          return answer.map((item) => `[${item}]`).join("");
+        } else {
+          return answer;
+        }
+      }),
+    ];
+    csvRows.push(dataRow.join(","));
+  });
+
+  // Create CSV file
+  const csvContent = csvRows.join("\n");
+  const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "survey_results.csv");
+  document.body.appendChild(link);
+  link.click();
+};
+
+
 
   return (
     <>
@@ -153,6 +196,12 @@ const SurveyResult = () => {
             </div>
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Trend Over Time</h2>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={exportToCSV}
+              >
+                Export CSV
+              </button>
               <div className=" overflow-x-auto">
                 <LineChart
                   width={600}
