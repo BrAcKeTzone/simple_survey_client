@@ -17,6 +17,7 @@ export const questionsData = [
       "Cooking/Baking",
       "Others",
     ],
+    qHeader: "Preferred Leisure Activities",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const questionsData = [
       "It depends on my mood",
       "No preference",
     ],
+    qHeader: "Preference for Indoor or Outdoor Activities",
   },
   {
     id: 3,
@@ -41,6 +43,7 @@ export const questionsData = [
       "Exposure through media (TV, books, etc.)",
       "Educational or professional reasons",
     ],
+    qHeader: "Inspiration for Pursuing Hobbies",
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ export const questionsData = [
       "Creativity",
       "Skill development",
     ],
+    qHeader: "Factors Contributing to Enjoyment of Leisure Activities",
   },
   {
     id: 5,
@@ -67,6 +71,7 @@ export const questionsData = [
       "7-10 hours",
       "More than 10 hours",
     ],
+    qHeader: "Time Dedication to Favorite Hobby",
   },
   {
     id: 6,
@@ -74,6 +79,7 @@ export const questionsData = [
     question_text:
       "Are there specific times during the day when you prefer to engage in your leisure activities?",
     choice_selections: ["Morning", "Afternoon", "Evening", "Night"],
+    qHeader: "Preferred Time for Leisure Activities",
   },
   {
     id: 7,
@@ -86,6 +92,7 @@ export const questionsData = [
       "With family",
       "With a mix of friends and family",
     ],
+    qHeader: "Preference for Solo or Group Leisure Activities",
   },
   {
     id: 8,
@@ -99,6 +106,7 @@ export const questionsData = [
       "Mixing leisure with study breaks",
       "No specific strategy",
     ],
+    qHeader: "Balancing Leisure and Academic Responsibilities",
   },
   {
     id: 9,
@@ -111,6 +119,7 @@ export const questionsData = [
       "Prioritizing other commitments first",
       "It depends on the situation",
     ],
+    qHeader: "Prioritization of Hobbies vs. Other Commitments",
   },
   {
     id: 10,
@@ -122,5 +131,6 @@ export const questionsData = [
       "Participating in group activities",
       "I prefer to keep it private",
     ],
+    qHeader: "Sharing Leisure Activities with Others",
   },
 ];
