@@ -403,7 +403,10 @@ const SurveyResult = () => {
                                             </h3>
                                             <div className="overflow-x-auto">
                                                 <BarChart
-                                                    width={600}
+                                                    width={Math.min(
+                                                        Math.max(1000, 1800),
+                                                        2000
+                                                    )}
                                                     height={300}
                                                     data={question.choice_selections.map(
                                                         choice => ({
@@ -523,3 +526,4 @@ const SurveyResult = () => {
 };
 
 export default SurveyResult;
+ 
